@@ -110,8 +110,10 @@ public class Main {
                                 double unitPrice = input.nextDouble();
                                 switch(produceChoice){
                                     case 1:
-                                    Asparagus asparagus = new Asparagus(unitPrice);
-                                    
+                                        Asparagus asparagus = new Asparagus(unitPrice);
+                                        Stand stand = market.getStand(standID);
+                                        stand.addProduce(asparagus, quantity);
+                                        break;
                                     case 2:
                                     case 3:
                                     case 4:
