@@ -69,11 +69,11 @@ public class Main {
                         standID = input.nextInt();
                         if (market.containsStand(standID)){
                             System.out.println("Please enter the name of the farmer to be assigned to Stand ID #: " + standID);
-                            String farmerName = input.next();
+                            input.nextLine();
+                            String farmerName = input.nextLine();
                             Farmer newFarmer = new Farmer(farmerName);
                             market.assignFarmer(standID, newFarmer);
-                            System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");
-                            input.nextLine();
+                            System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");    
                             break;
                         } else{
                             System.out.println("Please select a valid Stand ID #.");
