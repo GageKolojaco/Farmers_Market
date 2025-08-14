@@ -12,8 +12,9 @@ public class Stand {
     private List<InventoryItem> inventory;
     private int standID;
 
-    public Stand (Farmer farmer, int standID){ //Stand constructor
-        this.farmer = farmer; // we will see how we want to implement this
+    //public Stand (Farmer farmer, int standID){ //Stand constructor
+    public Stand (int standID){
+        //this.farmer = farmer; // we will see how we want to implement this
                               // thinking about making the constructor only use the list
         this.inventory = new ArrayList<>();
         this.standID = standID;

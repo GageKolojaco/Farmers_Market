@@ -48,6 +48,7 @@ public class Main {
                 switch(choice){
                     case 1:
                     //addStand();
+                    market.addStand();
                     case 2:
                     //assignFarmerToStand();
                     case 3:
