@@ -4,7 +4,7 @@ import Farmer.Farmer;
 import Stand.Stand;
 
 public class Market {  //using a basic linked list to connect all the stands in the market
-    
+
     private static class Node { //nested node class
         Stand stand;
         int standID;
@@ -71,5 +71,18 @@ public class Market {  //using a basic linked list to connect all the stands in 
         }
         if (currentNode.standID == standID){containsStand = true;}
         return containsStand;
+    }
+
+    public Stand getStand(int standID){
+        Node currentNode = head;
+        Stand stand = null;
+        while (currentNode.next != null){
+            if (currentNode.standID == standID){
+                stand = currentNode.stand;
+            }
+            currentNode = currentNode.next;
+        }
+        if (currentNode.standID == standID){stand = currentNode.stand;}
+        return stand;
     }
 }
