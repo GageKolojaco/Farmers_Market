@@ -21,6 +21,8 @@ public class Stand {
     
     public int getStandID(){return standID;}
 
+    public void setStandID(int standID){this.standID = standID;}
+
     public Farmer getFarmer(){return farmer;}
 
     public void setFarmer(Farmer farmer){this.farmer = farmer;}
