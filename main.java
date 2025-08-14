@@ -4,7 +4,11 @@ import java.util.Scanner;
 import Farmer.Farmer;
 import Market.Market;
 import Produce.Asparagus;
+import Produce.Celery;
+import Produce.Dragonfruit;
 import Produce.Produce;
+import Produce.Strawberry;
+import Produce.Watermelon;
 import Produce.Produce.produceTypes;
 import Stand.Stand;
 
@@ -115,9 +119,25 @@ public class Main {
                                         stand.addProduce(asparagus, quantity);
                                         break;
                                     case 2:
+                                        Celery celery = new Celery(unitPrice);
+                                        stand = market.getStand(standID);
+                                        stand.addProduce(celery, quantity);
+                                        break;
                                     case 3:
+                                        Dragonfruit dragonfruit = new Dragonfruit(unitPrice);
+                                        stand = market.getStand(standID);
+                                        stand.addProduce(dragonfruit, quantity);
+                                        break;
                                     case 4:
+                                        Strawberry strawberry = new Strawberry(unitPrice);
+                                        stand = market.getStand(standID);
+                                        stand.addProduce(strawberry, quantity);
+                                        break;
                                     case 5:
+                                        Watermelon watermelon = new Watermelon(unitPrice);
+                                        stand = market.getStand(standID);
+                                        stand.addProduce(watermelon, quantity);
+                                        break;
                                     default:
                                         System.out.println("Please enter an integer value 1 through 6");
                                 }

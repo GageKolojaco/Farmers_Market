@@ -12,6 +12,8 @@ public class InventoryItem {
     }
 
     public Produce getProduce(){return produce;}
+    
+    public String getProduceName(){return produce.getName();}
 
     public int getNumberOfItems(){return numberOfItems;}
 
