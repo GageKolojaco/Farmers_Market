@@ -54,8 +54,6 @@ public class Main {
                 input.nextLine();
                 switch(choice){
                     case 1:
-                        //addStand();
-                        //market.addStand();
                         System.out.println("====================");
                         System.out.println("Please enter an integer value representing the ID of the stand to be added:");
                         int standID = input.nextInt();
@@ -72,7 +70,10 @@ public class Main {
                         System.out.println("Please enter the name of the farmer to be assigned to Stand ID #: " + standID);
                         String farmerName = input.next();
                         Farmer newFarmer = new Farmer(farmerName);
-                        
+                        market.assignFarmer(standID, newFarmer);
+                        System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");
+                        input.nextLine();
+                        break;
                     case 3:
                     //assignProduce to Stand();
                     case 4:
