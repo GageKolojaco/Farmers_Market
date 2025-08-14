@@ -10,13 +10,19 @@ import Produce.Produce;
 public class Stand {
     private Farmer farmer;
     private List<InventoryItem> inventory;
+    private int standID;
 
-    public Stand (Farmer farmer){ //Stand constructor
+    public Stand (Farmer farmer, int standID){ //Stand constructor
         this.farmer = farmer; // we will see how we want to implement this
                               // thinking about making the constructor only use the list
         this.inventory = new ArrayList<>();
+        this.standID = standID;
     }
     
+    public int getStandID(){return standID;}
+
+    public void setStandID(int standID){this.standID = standID;}
+
     public Farmer getFarmer(){return farmer;}
 
     public void setFarmer(Farmer farmer){this.farmer = farmer;}
