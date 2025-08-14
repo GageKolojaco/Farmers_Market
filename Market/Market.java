@@ -43,7 +43,9 @@ public class Market {  //using a basic linked list to connect all the stands in 
         Node currentNode = head;
         while (currentNode.next != null){
             System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmer());
+            currentNode = currentNode.next;
         }
+        System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmer());
     }
     
 }
