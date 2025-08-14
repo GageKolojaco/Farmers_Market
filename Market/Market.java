@@ -24,6 +24,8 @@ public class Market {  //using a basic linked list to connect all the stands in 
         this.size = 0;
     }
 
+    public int getSize(){return size;}
+
     public void addStand(Stand stand){
         Node newNode = new Node(stand);
         if (head == null){
@@ -37,5 +39,11 @@ public class Market {  //using a basic linked list to connect all the stands in 
         size++;
     }
 
+    public void listStands(){
+        Node currentNode = head;
+        while (currentNode.next != null){
+            System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmer());
+        }
+    }
     
 }
