@@ -1,5 +1,6 @@
 package Market;
 
+import Farmer.Farmer;
 import Stand.Stand;
 
 public class Market {  //using a basic linked list to connect all the stands in the market
@@ -46,6 +47,16 @@ public class Market {  //using a basic linked list to connect all the stands in 
             currentNode = currentNode.next;
         }
         System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmer());
+    }
+
+    public void assignFarmer(int standID, Farmer farmer){
+        Node currentNode = head;
+        while (currentNode.next != null){
+            if (currentNode.standID == standID){
+                currentNode.stand.setFarmer(farmer);
+            }
+            currentNode = currentNode.next;
+        }
     }
     
 }

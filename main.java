@@ -1,6 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Farmer.Farmer;
 import Market.Market;
 import Stand.Stand;
 
@@ -64,6 +65,14 @@ public class Main {
                         break;
                     case 2:
                     //assignFarmerToStand();
+                        System.out.println("====================");
+                        market.listStands();
+                        System.out.println("Please select a Stand ID number to assign a farmer to:");
+                        standID = input.nextInt();
+                        System.out.println("Please enter the name of the farmer to be assigned to Stand ID #: " + standID);
+                        String farmerName = input.next();
+                        Farmer newFarmer = new Farmer(farmerName);
+                        
                     case 3:
                     //assignProduce to Stand();
                     case 4:
