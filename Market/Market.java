@@ -43,10 +43,10 @@ public class Market {  //using a basic linked list to connect all the stands in 
     public void listStands(){
         Node currentNode = head;
         while (currentNode.next != null){
-            System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmer());
+            System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmerName());
             currentNode = currentNode.next;
         }
-        System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmer());
+        System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmerName());
     }
 
     public void assignFarmer(int standID, Farmer farmer){
@@ -57,6 +57,19 @@ public class Market {  //using a basic linked list to connect all the stands in 
             }
             currentNode = currentNode.next;
         }
+        if (currentNode.standID == standID){currentNode.stand.setFarmer(farmer);}
     }
-    
+
+    public boolean containsStand(int standID){
+        Node currentNode = head;
+        boolean containsStand = false;
+        while (currentNode.next != null){
+            if (currentNode.standID == standID){
+                containsStand = true;
+            }
+            currentNode = currentNode.next;
+        }
+        if (currentNode.standID == standID){containsStand = true;}
+        return containsStand;
+    }
 }

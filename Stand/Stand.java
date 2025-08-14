@@ -8,7 +8,7 @@ import Inventory.InventoryItem;
 import Produce.Produce;
 
 public class Stand {
-    private Farmer farmer;
+    private Farmer farmer = new Farmer(null);
     private List<InventoryItem> inventory;
     private int standID;
 
@@ -24,7 +24,8 @@ public class Stand {
 
     public void setStandID(int standID){this.standID = standID;}
 
-    public Farmer getFarmer(){return farmer;}
+    //public Farmer getFarmer(){return farmer;}
+    public String getFarmerName(){return farmer.getName();}
 
     public void setFarmer(Farmer farmer){this.farmer = farmer;}
 

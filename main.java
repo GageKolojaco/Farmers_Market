@@ -55,11 +55,11 @@ public class Main {
                 switch(choice){
                     case 1:
                         System.out.println("====================");
-                        System.out.println("Please enter an integer value representing the ID of the stand to be added:");
+                        System.out.println("Please enter an integer value representing the ID of the stand to be added:\n");
                         int standID = input.nextInt();
                         Stand newStand = new Stand(standID);
                         market.addStand(newStand);
-                        System.out.println("Stand ID # " + standID + " added.");
+                        System.out.println("\nStand ID # " + standID + " added.");
                         break;
                     case 2:
                     //assignFarmerToStand();
@@ -67,13 +67,18 @@ public class Main {
                         market.listStands();
                         System.out.println("Please select a Stand ID number to assign a farmer to:");
                         standID = input.nextInt();
-                        System.out.println("Please enter the name of the farmer to be assigned to Stand ID #: " + standID);
-                        String farmerName = input.next();
-                        Farmer newFarmer = new Farmer(farmerName);
-                        market.assignFarmer(standID, newFarmer);
-                        System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");
-                        input.nextLine();
-                        break;
+                        if (market.containsStand(standID)){
+                            System.out.println("Please enter the name of the farmer to be assigned to Stand ID #: " + standID);
+                            String farmerName = input.next();
+                            Farmer newFarmer = new Farmer(farmerName);
+                            market.assignFarmer(standID, newFarmer);
+                            System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");
+                            input.nextLine();
+                            break;
+                        } else{
+                            System.out.println("Please select a valid Stand ID #.");
+                            break;
+                        }
                     case 3:
                     //assignProduce to Stand();
                     case 4:
