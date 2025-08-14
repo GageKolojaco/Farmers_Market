@@ -61,13 +61,16 @@ public class Main {
                         market.addStand(newStand);
                         System.out.println("\nStand ID # " + standID + " added.");
                         break;
+                        
                     case 2:
                     //assignFarmerToStand();
                         System.out.println("====================");
                         market.listStands();
                         System.out.println("Please select a Stand ID number to assign a farmer to:");
                         standID = input.nextInt();
-                        if (market.containsStand(standID)){
+                        boolean validStandSelected = false;
+                        while (!validStandSelected){
+                            if (market.containsStand(standID)){
                             System.out.println("Please enter the name of the farmer to be assigned to Stand ID #: " + standID);
                             input.nextLine();
                             String farmerName = input.nextLine();
@@ -75,10 +78,12 @@ public class Main {
                             market.assignFarmer(standID, newFarmer);
                             System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");    
                             break;
-                        } else{
+                            } else{
                             System.out.println("Please select a valid Stand ID #.");
-                            break;
+                            standID = input.nextInt();
+                            }
                         }
+                        
                     case 3:
                     //assignProduce to Stand();
                     case 4:
