@@ -2,6 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Market.Market;
+import Stand.Stand;
 
 public class Main {
     private static Scanner input = new Scanner(System.in);
@@ -48,13 +49,17 @@ public class Main {
                 switch(choice){
                     case 1:
                     //addStand();
-                    market.addStand();
+                    //market.addStand();
+                    System.out.println("Please enter an integer value representing the ID of the stand to be added:");
+                    int standID = input.nextInt();
+                    Stand newStand = new Stand(standID);
+                    market.addStand(newStand);
                     case 2:
                     //assignFarmerToStand();
                     case 3:
                     //assignProduce to Stand();
                     case 4:
-                    //viewStands();
+                        market.listStands();
                     case 5:
                     //search();
                     default:
