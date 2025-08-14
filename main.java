@@ -3,11 +3,14 @@ import java.util.Scanner;
 
 import Farmer.Farmer;
 import Market.Market;
+import Produce.Produce;
+import Produce.Produce.produceTypes;
 import Stand.Stand;
 
 public class Main {
     private static Scanner input = new Scanner(System.in);
     private static Market market = new Market();
+
     public static void main(String[] args) {
         boolean mainMenu = true;
         while(mainMenu){
@@ -61,7 +64,6 @@ public class Main {
                         market.addStand(newStand);
                         System.out.println("\nStand ID # " + standID + " added.");
                         break;
-                        
                     case 2:
                     //assignFarmerToStand();
                         System.out.println("====================");
@@ -83,9 +85,28 @@ public class Main {
                             standID = input.nextInt();
                             }
                         }
-                        
                     case 3:
                     //assignProduce to Stand();
+                    System.out.println("===================="); 
+                        market.listStands();
+                        System.out.println("Please select a Stand ID number to assign produce to:");
+                        standID = input.nextInt();
+                        validStandSelected = false;
+                        while (!validStandSelected){
+                            if(market.containsStand(standID)){
+                                validStandSelected = true;
+                                System.out.println("Please select the piece of produce to be assigned to Stand ID #: " + standID);
+                                for (Produce.produceTypes type : produceTypes.values()) {
+                                    int i=1;
+                                    System.out.println(i + ": " + type.toString());
+                                    i++;
+                                }
+                            } else{
+                            System.out.println("Please select a valid Stand ID #.");
+                            standID = input.nextInt();
+                            }
+                        }
+
                     case 4:
                         System.out.println("====================");
                         market.listStands();
@@ -96,7 +117,7 @@ public class Main {
                         marketMenu = false;
                         return;
                     default:
-                        System.out.println("Please enter an integer value 1 through 5");
+                        System.out.println("Please enter an integer value 1 through 6");
                 }
             }
             catch (InputMismatchException e) {

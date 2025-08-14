@@ -1,7 +1,10 @@
 package Produce;
+
 public abstract class Produce {
     private String name;
     private double unitPrice;
+    public enum produceTypes {ASPARAGUS, CELERY, DRAGONFRUIT, STRAWBERRY, WATERMELON;}
+
 
     public Produce(String name, double unitPrice){ //Constructor
         this.name = name;
