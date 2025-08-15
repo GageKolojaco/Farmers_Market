@@ -15,28 +15,27 @@ public class Main {
 
     private static void mainMenu(boolean mainMenuFlag){
         System.out.println("====================");
-            System.out.println("Main Menu:");
-            System.out.println("1:> Open Market");
-            System.out.println("2:> Exit");
-            System.out.println("====================");
-            try{    
-                int choice = input.nextInt();
-                input.nextLine();
-                switch(choice){
-                    case 1:
-                        market.openMarket(input);
-                        break;
-                    case 2:
-                        mainMenuFlag = false;
-                        return;
-                    default:
-                        System.out.println("Please enter the integer value 1 or 2");
-                }
+        System.out.println("Main Menu:");
+        System.out.println("1:> Open Market");
+        System.out.println("2:> Exit");
+        System.out.println("====================");
+        try{    
+            int choice = input.nextInt();
+            input.nextLine();
+            switch(choice){
+                case 1:
+                    market.openMarket();
+                    break;
+                case 2:
+                    mainMenuFlag = false;
+                    return;
+                default:
+                    System.out.println("Please enter the integer value 1 or 2");
             }
-            catch (InputMismatchException e) {
-                System.out.println("Please input a valid integer.");
-                input.nextLine();
-            }
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Please input a valid integer.");
+            input.nextLine();
+        }
     }
-  
 }
