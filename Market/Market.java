@@ -57,10 +57,10 @@ public class Market {  //using a basic linked list to connect all the stands in 
                         addStand();
                         break;
                     case 2:
-                        assignFarmerToStand();
+                        assignFarmer();
                         break;
                     case 3:
-                        assignProduceToStand();
+                        assignProduce();
                         break;
                     case 4:
                         listStands();
@@ -114,27 +114,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         size++;
         System.out.println("\nStand ID # " + standID + " added.");
     }
-
-    private boolean listStands(){
-        System.out.println("====================");
-        Node currentNode = head;
-        boolean standsPresent = false;
-        if (currentNode != null){
-            while (currentNode.next != null){
-            System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmerName());
-            currentNode = currentNode.next;
-            }
-        System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmerName()); //+ " Produce Sold: " + currentNode.stand.getInventoryToString());
-        standsPresent = true;
-        return standsPresent;
-        } else {
-            System.out.println("No available stands");
-            return standsPresent;
-        }
-        
-    }
-
-    private void assignFarmer(int standID, Farmer farmer){
+     /*private void assignFarmer(int standID, Farmer farmer){ //can also move functionality into assignFarmerToStand
         Node currentNode = head;
         while (currentNode != null){
             if (currentNode.standID == standID){
@@ -142,9 +122,8 @@ public class Market {  //using a basic linked list to connect all the stands in 
             }
             currentNode = currentNode.next;
         }
-    }
-
-    private void assignFarmerToStand(){
+    }*/
+    private void assignFarmer(){
         System.out.println("====================");
         if(listStands()){
             System.out.println("Please select a Stand ID number to assign a farmer to:");
@@ -157,7 +136,14 @@ public class Market {  //using a basic linked list to connect all the stands in 
                     input.nextLine();
                     String farmerName = input.nextLine();
                     Farmer newFarmer = new Farmer(farmerName);
-                    assignFarmer(standID, newFarmer);
+                    //assignFarmer(standID, newFarmer);
+                    Node currentNode = head;
+                    while (currentNode != null){
+                        if (currentNode.standID == standID){
+                            currentNode.stand.setFarmer(newFarmer);
+                        }
+                        currentNode = currentNode.next;
+                    }
                     System.out.println("Farmer " + farmerName + " assigned to Stand ID # " + standID + ".");    
                 } else{
                     System.out.println("Please select a valid Stand ID #.");
@@ -167,44 +153,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         }
     }
 
-    private boolean containsStand(int standID){ //change this later to probably if (getStand) true, else false
-        Node currentNode = head;
-        boolean containsStand = false;
-        while (currentNode != null){
-            if (currentNode.standID == standID){
-                containsStand = true;
-            }
-            currentNode = currentNode.next;
-        }
-        return containsStand;
-    }
-
-    private Stand getStand(int standID){
-        Node currentNode = head;
-        Stand stand = null;
-        while (currentNode != null){
-            if (currentNode.standID == standID){
-                stand = currentNode.stand;
-            }
-            currentNode = currentNode.next;
-        }
-        return stand;
-    }
-
-    private List<Stand> findStandsFromProduce(String produce){
-        List<Stand> listOfStands = null;
-        Node currentNode = head;
-        while (currentNode != null){
-            for (InventoryItem item : currentNode.stand.getInventory())
-                if (produce.equals(item.getName())){
-                    listOfStands.add(currentNode.stand);
-                }
-            currentNode = currentNode.next;
-        }
-        return listOfStands; 
-    }
-
-    private void assignProduceToStand(){
+    private void assignProduce(){
         System.out.println("===================="); 
         if(listStands()){
             System.out.println("Please select a Stand ID number to assign produce to:");
@@ -243,6 +192,25 @@ public class Market {  //using a basic linked list to connect all the stands in 
                 }
             }
         }
+    }
+
+    private boolean listStands(){
+        System.out.println("====================");
+        Node currentNode = head;
+        boolean standsPresent = false;
+        if (currentNode != null){
+            while (currentNode.next != null){
+            System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmerName());
+            currentNode = currentNode.next;
+            }
+        System.out.println("Stand ID#: " + currentNode.standID + " Farmer: " + currentNode.stand.getFarmerName()); //+ " Produce Sold: " + currentNode.stand.getInventoryToString());
+        standsPresent = true;
+        return standsPresent;
+        } else {
+            System.out.println("No available stands");
+            return standsPresent;
+        }
+        
     }
 
     private void viewStandsInDetail(){
@@ -321,4 +289,47 @@ public class Market {  //using a basic linked list to connect all the stands in 
             System.out.println("====================");
         }
     }
+
+    private boolean containsStand(int standID){ //change this later to probably if (getStand) true, else false
+        Node currentNode = head;
+        boolean containsStand = false;
+        while (currentNode != null){
+            if (currentNode.standID == standID){
+                containsStand = true;
+            }
+            currentNode = currentNode.next;
+        }
+        return containsStand;
+    }
+
+    private Stand getStand(int standID){
+        Node currentNode = head;
+        Stand stand = null;
+        while (currentNode != null){
+            if (currentNode.standID == standID){
+                stand = currentNode.stand;
+            }
+            currentNode = currentNode.next;
+        }
+        return stand;
+    }
+
+    private List<Stand> findStandsFromProduce(String produce){
+        List<Stand> listOfStands = null;
+        Node currentNode = head;
+        while (currentNode != null){
+            for (InventoryItem item : currentNode.stand.getInventory())
+                if (produce.equals(item.getName())){
+                    listOfStands.add(currentNode.stand);
+                }
+            currentNode = currentNode.next;
+        }
+        return listOfStands; 
+    }
+
+    
+
+    
+
+    
 }

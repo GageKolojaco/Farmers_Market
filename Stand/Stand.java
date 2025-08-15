@@ -25,7 +25,7 @@ public class Stand {
 
     public String getFarmerName(){return farmer.getName();}
 
-    public void setFarmerName(Farmer farmer){this.farmer = farmer;}
+    public void setFarmer(Farmer farmer){this.farmer = farmer;}
 
     public void addItem(InventoryItem itemToAdd){
         for (InventoryItem item : inventory){//search through existing inventory
