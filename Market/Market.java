@@ -85,7 +85,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         }
     } 
 
-    private void insertStand(Stand stand){
+    /*private void insertStand(Stand stand){ //can comfortably move all the functionality into addStand() for clarity
         Node newNode = new Node(stand);
         if (head == null){
             head = newNode;
@@ -96,14 +96,22 @@ public class Market {  //using a basic linked list to connect all the stands in 
 
         }
         size++;
-    }
+    }*/
     //change most methods to private later now that most of the logic is handled within the market class
     private void addStand(){
         System.out.println("====================");
         System.out.println("Please enter an integer value representing the ID of the stand to be added:\n");
         int standID = input.nextInt();
         Stand newStand = new Stand(standID);
-        insertStand(newStand);
+        Node newNode = new Node(newStand);
+        if (head == null){
+            head = newNode;
+        } else {
+            Node currentNode = head;
+            while (currentNode != null){currentNode = currentNode.next;}
+            currentNode = newNode;
+        }
+        size++;
         System.out.println("\nStand ID # " + standID + " added.");
     }
 
@@ -128,13 +136,12 @@ public class Market {  //using a basic linked list to connect all the stands in 
 
     private void assignFarmer(int standID, Farmer farmer){
         Node currentNode = head;
-        while (currentNode.next != null){
+        while (currentNode != null){
             if (currentNode.standID == standID){
                 currentNode.stand.setFarmerName(farmer);
             }
             currentNode = currentNode.next;
         }
-        if (currentNode.standID == standID){currentNode.stand.setFarmerName(farmer);}
     }
 
     private void assignFarmerToStand(){
@@ -163,43 +170,37 @@ public class Market {  //using a basic linked list to connect all the stands in 
     private boolean containsStand(int standID){ //change this later to probably if (getStand) true, else false
         Node currentNode = head;
         boolean containsStand = false;
-        while (currentNode.next != null){
+        while (currentNode != null){
             if (currentNode.standID == standID){
                 containsStand = true;
             }
             currentNode = currentNode.next;
         }
-        if (currentNode.standID == standID){containsStand = true;}
         return containsStand;
     }
 
     private Stand getStand(int standID){
         Node currentNode = head;
         Stand stand = null;
-        while (currentNode.next != null){
+        while (currentNode != null){
             if (currentNode.standID == standID){
                 stand = currentNode.stand;
             }
             currentNode = currentNode.next;
         }
-        if (currentNode.standID == standID){stand = currentNode.stand;}
         return stand;
     }
 
     private List<Stand> findStandsFromProduce(String produce){
         List<Stand> listOfStands = null;
         Node currentNode = head;
-        while (currentNode.next != null){
+        while (currentNode != null){
             for (InventoryItem item : currentNode.stand.getInventory())
                 if (produce.equals(item.getName())){
                     listOfStands.add(currentNode.stand);
                 }
             currentNode = currentNode.next;
         }
-        for (InventoryItem item : currentNode.stand.getInventory())
-            if (produce.equals(item.getName())){
-                listOfStands.add(currentNode.stand);
-            }
         return listOfStands; 
     }
 
