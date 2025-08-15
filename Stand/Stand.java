@@ -5,7 +5,6 @@ import java.util.List;
 
 import Farmer.Farmer;
 import Inventory.InventoryItem;
-import Produce.Produce;
 
 public class Stand {
     private Farmer farmer = new Farmer(null);
@@ -29,7 +28,7 @@ public class Stand {
 
     public void setFarmer(Farmer farmer){this.farmer = farmer;}
 
-    public void addProduce(Produce produce, int numberOfItems, double unitPrice){
+    public void addProduce(InventoryItem produce, int numberOfItems, double unitPrice){
         for (InventoryItem item : inventory){//search through existing inventory
             if (item.getProduce().equals(produce)){ //if the produce already exists then add more
                 item.setNumberOfItems(item.getNumberOfItems()+numberOfItems);
@@ -40,7 +39,7 @@ public class Stand {
         inventory.add(newItem);
     }
 
-    public void removeProduce(Produce produce, int numberOfItems){
+    public void removeProduce(InventoryItem produce, int numberOfItems){
         for (InventoryItem item : inventory){
             if (item.getProduce().equals(produce)){
                 item.setNumberOfItems(item.getNumberOfItems()-numberOfItems);

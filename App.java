@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import Market.Market;
 
-public class Main{
+public class App{
     private static Scanner input = new Scanner(System.in);
     private static Market market = new Market();
 

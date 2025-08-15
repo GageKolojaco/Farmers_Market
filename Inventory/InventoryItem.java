@@ -1,28 +1,13 @@
 package Inventory;
 
-import Produce.Produce;
+public interface InventoryItem { //maybe look into making inventory item a parent class to produce?
 
-public class InventoryItem { //maybe look into making inventory item a parent class to produce?
-    private Produce produce;
-    private int numberOfItems;
-    private double unitPrice;
+    String getName();
 
-    public InventoryItem(Produce produce, int numberOfItems, double unitPrice){
-        this.produce = produce;
-        this.numberOfItems = numberOfItems;
-        this.unitPrice = unitPrice;
-    }
+    int getNumberOfItems();
 
-    public Produce getProduce(){return produce;}
+    void setNumberOfItems(int numberOfItems);
 
-    public String getProduceName(){return produce.getName();}
-
-    public int getNumberOfItems(){return numberOfItems;}
-
-    public void setNumberOfItems(int numberOfItems){this.numberOfItems = numberOfItems;}
-
-    public double getUnitPrice(){return unitPrice;}
-
-    public void setUnitPrice(double unitPrice){this.unitPrice = unitPrice;}
+    double getUnitPrice();
 
 }

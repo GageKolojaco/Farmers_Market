@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 import Farmer.Farmer;
 import Inventory.InventoryItem;
-import Produce.Produce;
-import Produce.Produce.produceTypes;
-import Produce.Asparagus;
-import Produce.Celery;
-import Produce.Dragonfruit;
-import Produce.Strawberry;
-import Produce.Watermelon;
+import Inventory.Produce.Asparagus;
+import Inventory.Produce.Celery;
+import Inventory.Produce.Dragonfruit;
+import Inventory.Produce.Produce;
+import Inventory.Produce.Strawberry;
+import Inventory.Produce.Watermelon;
+import Inventory.Produce.Produce.produceTypes;
 import Stand.Stand;
 
 public class Market {  //using a basic linked list to connect all the stands in the market
