@@ -51,7 +51,7 @@ public class Stand {
     public String getInventory(){
         String inventory = "";
         for (InventoryItem item : this.inventory){//search through existing inventory
-            inventory += item.getProduceName() + " Quantity: " + item.getNumberOfItems();
+            inventory += item.getProduceName() + " Quantity: " + item.getNumberOfItems() + " ";
         }
         if (inventory.isEmpty()){inventory = "No Produce Assigned";}
         return inventory;

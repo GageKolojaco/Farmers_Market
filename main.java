@@ -54,8 +54,9 @@ public class Main {
             System.out.println("2:> Assign Farmer to Stand");
             System.out.println("3:> Assign Produce to Stand");
             System.out.println("4:> View Stands");
-            System.out.println("5:> Search by Produce Name");
-            System.out.println("6:> Exit to Main Menu");
+            System.out.println("5:> View Stand in detail");
+            System.out.println("6:> Search by Produce Name");
+            System.out.println("7:> Exit to Main Menu");
             System.out.println("====================");
             try{    
                 int choice = input.nextInt();
@@ -153,12 +154,26 @@ public class Main {
                         market.listStands();
                         break;
                     case 5:
-                    //search();
+                        System.out.println("====================");
+                        System.out.println("Please select a Stand ID number look at in further detail:");
+                        standID = input.nextInt();
+                        Stand stand = market.getStand(standID);//next step is pulling up stand details, exit stand button, and buy produce button.
+                        System.out.println("====================");
+                        System.out.println("Stand ID #: " + standID);
+                        System.out.println("Inventory: " + stand.getInventory());
+                        System.out.println("====================");
+                        System.out.println("Options: ");
+                        System.out.println("1:> Purchase Produce");
+                        System.out.println("2:> Exit to Market Menu");
+                        choice = input.nextInt();
+                        break;
                     case 6:
+                    //search();
+                    case 7:
                         marketMenu = false;
                         return;
                     default:
-                        System.out.println("Please enter an integer value 1 through 6");
+                        System.out.println("Please enter an integer value 1 through 7");
                 }
             }
             catch (InputMismatchException e) {
