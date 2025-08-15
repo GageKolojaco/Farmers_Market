@@ -29,14 +29,14 @@ public class Stand {
 
     public void setFarmer(Farmer farmer){this.farmer = farmer;}
 
-    public void addProduce(Produce produce, int numberOfItems){
+    public void addProduce(Produce produce, int numberOfItems, double unitPrice){
         for (InventoryItem item : inventory){//search through existing inventory
             if (item.getProduce().equals(produce)){ //if the produce already exists then add more
                 item.setNumberOfItems(item.getNumberOfItems()+numberOfItems);
                 return;
             }
         }
-        InventoryItem newItem = new InventoryItem(produce, numberOfItems); //else it will hit this statement and add the new item
+        InventoryItem newItem = new InventoryItem(produce, numberOfItems, unitPrice); //else it will hit this statement and add the new item
         inventory.add(newItem);
     }
 
@@ -48,7 +48,7 @@ public class Stand {
         }
     }
 
-    //public InventoryItem getInventory
+    public List<InventoryItem> getInventory(){return inventory;}
 
     public String getInventoryToString(){
         String inventory = "";

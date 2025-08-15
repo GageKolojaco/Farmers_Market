@@ -2,6 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Farmer.Farmer;
+import Inventory.InventoryItem;
 import Market.Market;
 import Produce.Asparagus;
 import Produce.Celery;
@@ -63,6 +64,7 @@ public class Main {
                 input.nextLine();
                 switch(choice){
                     case 1:
+                    //addStand();
                         System.out.println("====================");
                         System.out.println("Please enter an integer value representing the ID of the stand to be added:\n");
                         int standID = input.nextInt();
@@ -115,29 +117,29 @@ public class Main {
                                 double unitPrice = input.nextDouble();
                                 switch(produceChoice){
                                     case 1:
-                                        Asparagus asparagus = new Asparagus(unitPrice);
+                                        Asparagus asparagus = new Asparagus(unitPrice);//change constructor so that it takes no args
                                         Stand stand = market.getStand(standID);
-                                        stand.addProduce(asparagus, quantity);
+                                        stand.addProduce(asparagus, quantity, unitPrice);
                                         break;
                                     case 2:
                                         Celery celery = new Celery(unitPrice);
                                         stand = market.getStand(standID);
-                                        stand.addProduce(celery, quantity);
+                                        stand.addProduce(celery, quantity, unitPrice);
                                         break;
                                     case 3:
                                         Dragonfruit dragonfruit = new Dragonfruit(unitPrice);
                                         stand = market.getStand(standID);
-                                        stand.addProduce(dragonfruit, quantity);
+                                        stand.addProduce(dragonfruit, quantity, unitPrice);
                                         break;
                                     case 4:
                                         Strawberry strawberry = new Strawberry(unitPrice);
                                         stand = market.getStand(standID);
-                                        stand.addProduce(strawberry, quantity);
+                                        stand.addProduce(strawberry, quantity, unitPrice);
                                         break;
                                     case 5:
                                         Watermelon watermelon = new Watermelon(unitPrice);
                                         stand = market.getStand(standID);
-                                        stand.addProduce(watermelon, quantity);
+                                        stand.addProduce(watermelon, quantity, unitPrice);
                                         break;
                                     default:
                                         System.out.println("Please enter an integer value 1 through 6");
@@ -150,17 +152,19 @@ public class Main {
                         }
                         break;
                     case 4:
+                        //listStands();
                         System.out.println("====================");
                         market.listStands();
                         break;
                     case 5:
+                    //viewStandsInDetail();
                         System.out.println("====================");
-                        System.out.println("Please select a Stand ID number look at in further detail:");
+                        System.out.println("Please select a Stand ID # look at in further detail:");
                         standID = input.nextInt();
                         Stand stand = market.getStand(standID);//next step is pulling up stand details, exit stand button, and buy produce button.
                         System.out.println("====================");
                         System.out.println("Stand ID #: " + standID);
-                        System.out.println("Inventory: " + stand.getInventory());
+                        System.out.println("Inventory: " + stand.getInventoryToString());
                         System.out.println("====================");
                         System.out.println("Options: ");
                         System.out.println("1:> Purchase Produce");
@@ -170,10 +174,11 @@ public class Main {
                             case 1:
                                 System.out.println("Please select the produce you would like to purchase:");
                                 int i=1;
-                                for (stand.inventory  type : produceTypes.values()) {
-                                    System.out.println(i + ": " + type.toString());
+                                for (InventoryItem item : stand.getInventory()) {
+                                    System.out.println(i + ": " + item.getProduceName() + " Unit Price: " + item.getUnitPrice());
                                     i++;
                                 }
+
                                 break;
                             case 2:
                                 break;
