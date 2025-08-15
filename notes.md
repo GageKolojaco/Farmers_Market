@@ -23,6 +23,7 @@ Notes:
 - This way of searching sounds inneficient though, think this would be faster if you made a map that took the desired produce subclass as a key.
 
 To be fixed:
-- Search feature currently breaks after selection of item to search for.
+- Fixed - *Search feature currently breaks after selection of item to search for.*
 - Fixed - *Adding a second produce adds the quantity values together instead of adding them as seperate items*
-- Exit to Market Menu currently exits program in some cases
+- Fixed - *Exit to Market Menu currently exits program in some cases*
+- Program allows for the assignment of duplicate id's for stands, probably fix with a call of containsStand();

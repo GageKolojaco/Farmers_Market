@@ -61,7 +61,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         boolean marketMenu = true;
         while(marketMenu){
             System.out.println("====================");
-            System.out.println("Market:");
+            System.out.println("Market Menu:");
             System.out.println("1:> Add Stand");
             System.out.println("2:> Assign Farmer to Stand");
             System.out.println("3:> Assign Produce to Stand");
@@ -329,27 +329,27 @@ public class Market {  //using a basic linked list to connect all the stands in 
             }
         System.out.println("====================");
         int produceChoice = input.nextInt();
-        String produce = "";
+        String produceName = "";
         switch(produceChoice){
                     case 1:
-                        produce = "Asparagus";
+                        produceName = "Asparagus";
                         break;
                     case 2:
-                        produce = "Celery";
+                        produceName = "Celery";
                         break;
                     case 3:
-                        produce = "Dragonfruit";
+                        produceName = "Dragonfruit";
                         break;
                     case 4:
-                        produce = "Strawberry";
+                        produceName = "Strawberry";
                         break;
                     case 5:
-                        produce = "Watermelon";
+                        produceName = "Watermelon";
                         break;
                     default:
                         System.out.println("Please enter an integer value 1 through 6");
                 }
-        for (Stand tempStand : findStandsFromProduce(produce)){
+        for (Stand tempStand : findStandsFromProduceName(produceName)){
             System.out.println("====================");
             System.out.println("Stand ID #: " + tempStand.getStandID());
             System.out.println("Inventory: " + tempStand.getInventoryToString());
@@ -357,12 +357,12 @@ public class Market {  //using a basic linked list to connect all the stands in 
         }
     }
 
-    private List<Stand> findStandsFromProduce(String produce){
-        List<Stand> listOfStands = null;
+    private List<Stand> findStandsFromProduceName(String produceName){
+        List<Stand> listOfStands = new ArrayList<>();
         Node currentNode = head;
         while (currentNode != null){
             for (InventoryItem item : currentNode.stand.getInventory())
-                if (produce.equals(item.getName())){
+                if (produceName.equals(item.getName())){
                     listOfStands.add(currentNode.stand);
                 }
             currentNode = currentNode.next;
