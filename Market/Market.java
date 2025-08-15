@@ -235,7 +235,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
                     InventoryItem newItem = ProduceFactory.build(produceChoiceString, unitPrice, quantity);
                     Stand stand = getStand(standID);
                     stand.addItem(newItem);
-                    System.out.println("Added " + quantity + " " + produceChoiceString + "to Stand ID # " + standID);
+                    System.out.println("Added " + quantity + " " + produceChoiceString + " to Stand ID # " + standID);
                 } else{
                 System.out.println("Please select a valid Stand ID #.");
                 standID = input.nextInt();
