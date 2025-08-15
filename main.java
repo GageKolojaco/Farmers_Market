@@ -166,6 +166,20 @@ public class Main {
                         System.out.println("1:> Purchase Produce");
                         System.out.println("2:> Exit to Market Menu");
                         choice = input.nextInt();
+                        switch (choice) {
+                            case 1:
+                                System.out.println("Please select the produce you would like to purchase:");
+                                int i=1;
+                                for (stand.inventory  type : produceTypes.values()) {
+                                    System.out.println(i + ": " + type.toString());
+                                    i++;
+                                }
+                                break;
+                            case 2:
+                                break;
+                            default:
+                                System.out.println("Please enter the integer value 1 or 2");
+                        }
                         break;
                     case 6:
                     //search();
