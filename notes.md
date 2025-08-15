@@ -21,3 +21,8 @@ Notes:
 - Stand class would then hold a list of mentioned wrapper class instead of list of produce subclass objects
 - Moving forward from there, searching would then look like the following: Iterate through the linked list of stand objects, Check if there is an instance of the desired subclass in the list of wrapper class objects contained in each node, check if the int value contained is >0, add farmers name and stand ID # to result to be returned.
 - This way of searching sounds inneficient though, think this would be faster if you made a map that took the desired produce subclass as a key.
+
+To be fixed:
+- Search feature currently breaks after selection of item to search for.
+- Adding a second produce adds the quantity values together instead of adding them as seperate items
+- Exit to Market Menu currently exits program

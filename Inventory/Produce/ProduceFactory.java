@@ -3,7 +3,6 @@ package Inventory.Produce;
 import Inventory.InventoryItem;
 
 public class ProduceFactory {
-    private ProduceFactory(){}
 
     public static InventoryItem build(String name, double unitPrice, int numberOfItems){
         String produceName = name.trim().toLowerCase(); //trimming for consistency
