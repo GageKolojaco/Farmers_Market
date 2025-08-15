@@ -28,5 +28,8 @@ public abstract class Produce implements InventoryItem{
     @Override
     public double getUnitPrice(){return unitPrice;}
 
+    @Override
+    public void setUnitPrice(double unitPrice){this.unitPrice = unitPrice;}
+
     
 }

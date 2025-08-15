@@ -10,4 +10,6 @@ public interface InventoryItem { //maybe look into making inventory item a paren
 
     double getUnitPrice();
 
+    void setUnitPrice(double unitPrice);
+
 }

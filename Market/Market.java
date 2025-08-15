@@ -64,7 +64,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
             System.out.println("Market Menu:");
             System.out.println("1:> Add Stand");
             System.out.println("2:> Assign Farmer to Stand");
-            System.out.println("3:> Assign Produce to Stand");
+            System.out.println("3:> Assign Produce to Stand / Alter Unit Price");
             System.out.println("4:> View Stands");
             System.out.println("5:> View Stand in detail");
             System.out.println("6:> Search by Produce Name");
@@ -124,7 +124,8 @@ public class Market {  //using a basic linked list to connect all the stands in 
         System.out.println("Please enter an integer value representing the ID of the stand to be added:");
         System.out.println("====================");
         int standID = input.nextInt();
-        Stand newStand = new Stand(standID);
+        if (!containsStand(standID)) {
+            Stand newStand = new Stand(standID);
         Node newNode = new Node(newStand);
         if (head == null){
             head = newNode;
@@ -136,6 +137,11 @@ public class Market {  //using a basic linked list to connect all the stands in 
         size++;
         System.out.println("====================");
         System.out.println("Stand ID # " + standID + " added.");
+        } else {
+            System.out.println("====================");
+            System.out.println("That Stand ID # is already assigned, please choose another");
+        }
+        
     }
      /*private void assignFarmer(int standID, Farmer farmer){ //can also move functionality into assignFarmerToStand
         Node currentNode = head;
@@ -183,7 +189,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
     private void assignProduce(){
         System.out.println("===================="); 
         if(listStands()){
-            System.out.println("Please select a Stand ID number to assign produce to:");
+            System.out.println("Please select a Stand ID number to assign produce / change unit price of produce of:");
             System.out.println("====================");
             int standID = input.nextInt();
             boolean validStandSelected = false;
@@ -191,7 +197,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
                 if(containsStand(standID)){
                     validStandSelected = true;
                     System.out.println("====================");
-                    System.out.println("Please select the piece of produce to be assigned to Stand ID #: " + standID);
+                    System.out.println("Please select the piece of produce to be modified");//to be assigned to Stand ID #: " + standID);
                     System.out.println("====================");
                     int i=1;
                     for (Produce.produceTypes type : produceTypes.values()) {
@@ -202,10 +208,12 @@ public class Market {  //using a basic linked list to connect all the stands in 
                     int produceChoice = input.nextInt();
                     System.out.println("====================");
                     System.out.println("Please enter a integer value representing the quantity of produce to be assigned to Stand ID #: " + standID);
+                    System.out.println("(Enter 0 to simply alter the unit price of the corresponding produce)");
                     System.out.println("====================");
                     int quantity = input.nextInt();
                     System.out.println("====================");
                     System.out.println("Please enter a decimal value representing the unit price of the produce to be assigned to Stand ID #: " + standID);
+                    System.out.println("(Enter 0 to simply assign a greater quantity of produce without altering the preexisting unit price)");
                     System.out.println("====================");
                     double unitPrice = input.nextDouble();
                     String produceChoiceString = null;
@@ -272,7 +280,12 @@ public class Market {  //using a basic linked list to connect all the stands in 
             Stand stand = getStand(standID); //next step is pulling up stand details, exit stand button, and buy produce button.
             System.out.println("====================");
             System.out.println("Stand ID #: " + standID);
-            System.out.println("Inventory: " + stand.getInventoryToString());
+            System.out.println("Farmer: " + stand.getFarmerName());
+            if (stand.getInventory().isEmpty()){
+                System.out.println("Inventory: Nothing in stock");
+            } else{
+                System.out.println("Inventory: " + stand.getInventoryToString());
+            }
             System.out.println("====================");
             System.out.println("Options: ");
             System.out.println("1:> Purchase Produce");
@@ -298,7 +311,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         List<InventoryItem> availableItems = new ArrayList<>();
         int i=1;
         for (InventoryItem item : stand.getInventory()) {
-            System.out.println(i + ": " + item.getName() + " | Quantity: " + item.getNumberOfItems() + " | Unit Price: " + item.getUnitPrice());
+            System.out.println(i + ":> " + item.getName() + " | Quantity: " + item.getNumberOfItems() + " | Unit Price: " + item.getUnitPrice());
             availableItems.add(item);
             i++;
         }

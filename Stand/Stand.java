@@ -31,6 +31,7 @@ public class Stand {
         for (InventoryItem item : inventory){//search through existing inventory
             if (item.getName().equals(itemToAdd.getName())){ //if the produce already exists then add more
                 item.setNumberOfItems(item.getNumberOfItems()+itemToAdd.getNumberOfItems());
+                if (itemToAdd.getUnitPrice() > 0) {item.setUnitPrice(itemToAdd.getUnitPrice());}
                 return;
             }
         }

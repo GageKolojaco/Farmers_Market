@@ -23,12 +23,13 @@ Notes:
 - This way of searching sounds inneficient though, think this would be faster if you made a map that took the desired produce subclass as a key.
 - Done - *Add flavor text if the produce search comes back empty*
 - Maybe add a few more produce subclasses for stress testing
-- Add farmer name to viewStandInDetail
-- Make it so that when produce is assigned to a stand already stocked in it, the new assignment resets the unit price to its most recent assignment
-- Maybe make it so that when your search for a piece of produce, 
+- Done - *Add farmer name to viewStandInDetail*
+- Done - *Make it so that when produce is assigned to a stand already stocked in it, the new assignment resets the unit price to its most recent assignment*
+- Maybe make it so that when your search for a piece of produce, it returns only the stand's specific item instead of the stand's entire inventory
 
 To be fixed:
 - Fixed - *Search feature currently breaks after selection of item to search for.*
 - Fixed - *Adding a second produce adds the quantity values together instead of adding them as seperate items*
 - Fixed - *Exit to Market Menu currently exits program in some cases*
-- Program allows for the assignment of duplicate id's for stands, probably fix with a call of containsStand();
+- Fixed - *Program allows for the assignment of duplicate id's for stands, probably fix with a call of containsStand();*
+- Program doesn't allow for the purchase of a greater quantity of item than assigned, but the flavor text confirming the sale still pops up
