@@ -38,10 +38,24 @@ public class Stand {
         inventory.add(itemToAdd);
     }
 
-    public void removeProduce(InventoryItem produce, int numberOfItems){
-        for (InventoryItem item : inventory){
+    public void removeProduce(InventoryItem produce, int numberOfItems){ //for each loop doesn't work here as the list will need to be modified while looping
+        /*for (InventoryItem item : inventory){
             if (item.getName().equals(produce.getName())){
                 item.setNumberOfItems(item.getNumberOfItems()-numberOfItems);
+            }
+        }*/
+        for (int i=0; i < inventory.size(); i++){
+            InventoryItem item = inventory.get(i);
+            if (item.getName().equals(produce.getName())){
+                int quantityRemaining = item.getNumberOfItems() - numberOfItems;
+                if (quantityRemaining < 0){System.out.println("Invalid Selection: Attempt to remove a higher quantity than stocked");}
+                else{
+                    if (quantityRemaining == 0) {
+                        inventory.remove(i);
+                    } else {
+                        item.setNumberOfItems(quantityRemaining);
+                    }
+                }
             }
         }
     }
