@@ -231,27 +231,27 @@ public class Market {  //using a basic linked list to connect all the stands in 
                         case 1:
                             Asparagus asparagus = new Asparagus(unitPrice, quantity);//change constructor so that it takes no args
                             Stand stand = getStand(standID);
-                            stand.addProduce(asparagus, quantity, unitPrice);
+                            stand.addItem(asparagus);
                             break;
                         case 2:
                             Celery celery = new Celery(unitPrice, quantity);
                             stand = getStand(standID);
-                            stand.addProduce(celery, quantity, unitPrice);
+                            stand.addItem(celery);
                             break;
                         case 3:
                             Dragonfruit dragonfruit = new Dragonfruit(unitPrice, quantity);
                             stand = getStand(standID);
-                            stand.addProduce(dragonfruit, quantity, unitPrice);
+                            stand.addItem(dragonfruit);
                             break;
                         case 4:
                             Strawberry strawberry = new Strawberry(unitPrice, quantity);
                             stand = getStand(standID);
-                            stand.addProduce(strawberry, quantity, unitPrice);
+                            stand.addItem(strawberry);
                             break;
                         case 5:
                             Watermelon watermelon = new Watermelon(unitPrice, quantity);
                             stand = getStand(standID);
-                            stand.addProduce(watermelon, quantity, unitPrice);
+                            stand.addItem(watermelon);
                             break;
                         default:
                             System.out.println("Please enter an integer value 1 through 6");

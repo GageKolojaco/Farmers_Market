@@ -27,15 +27,15 @@ public class Stand {
 
     public void setFarmerName(Farmer farmer){this.farmer = farmer;}
 
-    public void addProduce(InventoryItem produce, int numberOfItems, double unitPrice){
+    public void addItem(InventoryItem itemToAdd){
         for (InventoryItem item : inventory){//search through existing inventory
-            if (item.getName().equals(produce)){ //if the produce already exists then add more
-                item.setNumberOfItems(item.getNumberOfItems()+numberOfItems);
+            if (item.getName().equals(itemToAdd.getName())){ //if the produce already exists then add more
+                item.setNumberOfItems(item.getNumberOfItems()+itemToAdd.getNumberOfItems());
                 return;
             }
         }
-        InventoryItem newItem = new Produce(produce, unitPrice, numberOfItems); //else it will hit this statement and add the new item
-        inventory.add(newItem);
+        //InventoryItem newItem = new Produce(produce, unitPrice, numberOfItems); //else it will hit this statement and add the new item
+        inventory.add(itemToAdd);
     }
 
     public void removeProduce(InventoryItem produce, int numberOfItems){
