@@ -1,5 +1,6 @@
 package Market;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -35,6 +36,26 @@ public class Market {  //using a basic linked list to connect all the stands in 
     }
 
     public int getSize(){return size;}//might not be necessary
+
+    private Stand getStand(int standID){
+        Node currentNode = head;
+        Stand stand = null;
+        while (currentNode != null){
+            if (currentNode.standID == standID){
+                stand = currentNode.stand;
+            }
+            currentNode = currentNode.next;
+        }
+        return stand;
+    }
+
+    private boolean containsStand(int standID){ //change this later to probably if (getStand) true, else false
+        boolean containsStand = false;
+        if (getStand(standID) != null){
+            containsStand = true;
+        }
+        return containsStand;
+    }
 
     public void openMarket() {
         boolean marketMenu = true;
@@ -271,28 +292,30 @@ public class Market {  //using a basic linked list to connect all the stands in 
 
     private void buyProduce(Stand stand){
         System.out.println("====================");
-            System.out.println("Please select the produce you would like to purchase:");
+        System.out.println("Please select the produce you would like to purchase:");
+        System.out.println("====================");
+        List<InventoryItem> availableItems = new ArrayList<>();
+        int i=1;
+        for (InventoryItem item : stand.getInventory()) {
+            System.out.println(i + ": " + item.getName() + " | Quantity: " + item.getNumberOfItems() + " | Unit Price: " + item.getUnitPrice());
+            availableItems.add(item);
+            i++;
+        }
+        System.out.println("====================");
+        int choice = input.nextInt();
+        if (choice <= 0 || choice > availableItems.size()){
+            System.out.println("Please input a valid integer");
+        } else{
+            InventoryItem selectedItem = availableItems.get(choice-1);
             System.out.println("====================");
-            int i=1;
-            for (InventoryItem item : stand.getInventory()) {
-                System.out.println(i + ": " + item.getName() + " | Quantity: " + item.getNumberOfItems() + " | Unit Price: " + item.getUnitPrice());
-                i++;
-            }
+            System.out.println("Please enter an integer value representing the quantity you would like to purchase");
             System.out.println("====================");
-            int choice = input.nextInt();
-            if (choice <= 0 || choice >= i){
-                System.out.println("Please input a valid integer");
-            } else{
-                System.out.println("====================");
-                System.out.println("Please enter an integer value representing the quantity you would like to purchase");
-                System.out.println("====================");
-                int quantity = input.nextInt();
-                //stand.removeProduce(chosenProduce, quantity)
-                System.out.println("Purchased " + quantity + " of [itemName] at a unit price of [itemUnitPrice] for a total of [quantity * itemUnitPrice]");
-            }
-        //System.out.println("Please enter the quantity of " +  + " you would like to buy");
-        //int quantity = input.nextInt();
-        //stand.removeProduce(stand.getInventory().get(choice).getProduce(), quantity); 
+            int quantity = input.nextInt();
+            stand.removeProduce(selectedItem, quantity);
+            System.out.println("====================");
+            System.out.println("Purchased " + quantity + " of " + selectedItem.getName() + " at a unit price of " + selectedItem.getUnitPrice() + " for a total of $" + (quantity * selectedItem.getUnitPrice()));
+            System.out.println("====================");
+        }
     }
 
     private void searchProduce(){
@@ -303,6 +326,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
                 System.out.println(i + ": " + type.toString());
                 i++;
             }
+        System.out.println("====================");
         int produceChoice = input.nextInt();
         String produce = "";
         switch(produceChoice){
@@ -332,26 +356,6 @@ public class Market {  //using a basic linked list to connect all the stands in 
         }
     }
 
-    private boolean containsStand(int standID){ //change this later to probably if (getStand) true, else false
-        boolean containsStand = false;
-        if (getStand(standID) != null){
-            containsStand = true;
-        }
-        return containsStand;
-    }
-
-    private Stand getStand(int standID){
-        Node currentNode = head;
-        Stand stand = null;
-        while (currentNode != null){
-            if (currentNode.standID == standID){
-                stand = currentNode.stand;
-            }
-            currentNode = currentNode.next;
-        }
-        return stand;
-    }
-
     private List<Stand> findStandsFromProduce(String produce){
         List<Stand> listOfStands = null;
         Node currentNode = head;
@@ -365,9 +369,4 @@ public class Market {  //using a basic linked list to connect all the stands in 
         return listOfStands; 
     }
 
-    
-
-    
-
-    
 }

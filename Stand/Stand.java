@@ -34,7 +34,7 @@ public class Stand {
                 return;
             }
         }
-        //InventoryItem newItem = new Produce(produce, unitPrice, numberOfItems); //else it will hit this statement and add the new item
+        //InventoryItem newItem = new Produce(produce, unitPrice, numberOfItems); //else it will hit this statement and add the new item //OBSOLETE
         inventory.add(itemToAdd);
     }
 
