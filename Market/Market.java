@@ -130,8 +130,8 @@ public class Market {  //using a basic linked list to connect all the stands in 
             head = newNode;
         } else {
             Node currentNode = head;
-            while (currentNode != null){currentNode = currentNode.next;}
-            currentNode = newNode;
+            while (currentNode.next != null){currentNode = currentNode.next;}
+            currentNode.next = newNode;
         }
         size++;
         System.out.println("====================");
@@ -268,7 +268,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
             System.out.println("Please select a Stand ID # look at in further detail:");
             System.out.println("====================");
             int standID = input.nextInt();
-            Stand stand = getStand(standID);//next step is pulling up stand details, exit stand button, and buy produce button.
+            Stand stand = getStand(standID); //next step is pulling up stand details, exit stand button, and buy produce button.
             System.out.println("====================");
             System.out.println("Stand ID #: " + standID);
             System.out.println("Inventory: " + stand.getInventoryToString());
