@@ -195,13 +195,13 @@ public class Market {  //using a basic linked list to connect all the stands in 
         Node currentNode = head;
         while (currentNode.next != null){
             for (InventoryItem item : currentNode.stand.getInventory())
-                if (produce.equals(item.getProduceName())){
+                if (produce.equals(item.getName())){
                     listOfStands.add(currentNode.stand);
                 }
             currentNode = currentNode.next;
         }
         for (InventoryItem item : currentNode.stand.getInventory())
-            if (produce.equals(item.getProduceName())){
+            if (produce.equals(item.getName())){
                 listOfStands.add(currentNode.stand);
             }
         return listOfStands; 
@@ -229,27 +229,27 @@ public class Market {  //using a basic linked list to connect all the stands in 
                     double unitPrice = input.nextDouble();
                     switch(produceChoice){
                         case 1:
-                            Asparagus asparagus = new Asparagus(unitPrice);//change constructor so that it takes no args
+                            Asparagus asparagus = new Asparagus(unitPrice, quantity);//change constructor so that it takes no args
                             Stand stand = getStand(standID);
                             stand.addProduce(asparagus, quantity, unitPrice);
                             break;
                         case 2:
-                            Celery celery = new Celery(unitPrice);
+                            Celery celery = new Celery(unitPrice, quantity);
                             stand = getStand(standID);
                             stand.addProduce(celery, quantity, unitPrice);
                             break;
                         case 3:
-                            Dragonfruit dragonfruit = new Dragonfruit(unitPrice);
+                            Dragonfruit dragonfruit = new Dragonfruit(unitPrice, quantity);
                             stand = getStand(standID);
                             stand.addProduce(dragonfruit, quantity, unitPrice);
                             break;
                         case 4:
-                            Strawberry strawberry = new Strawberry(unitPrice);
+                            Strawberry strawberry = new Strawberry(unitPrice, quantity);
                             stand = getStand(standID);
                             stand.addProduce(strawberry, quantity, unitPrice);
                             break;
                         case 5:
-                            Watermelon watermelon = new Watermelon(unitPrice);
+                            Watermelon watermelon = new Watermelon(unitPrice, quantity);
                             stand = getStand(standID);
                             stand.addProduce(watermelon, quantity, unitPrice);
                             break;
@@ -284,17 +284,17 @@ public class Market {  //using a basic linked list to connect all the stands in 
                     System.out.println("Please select the produce you would like to purchase:");
                     int i=1;
                     for (InventoryItem item : stand.getInventory()) {
-                        System.out.println(i + ": " + item.getProduceName() + " Unit Price: " + item.getUnitPrice());
+                        System.out.println(i + ": " + item.getName() + " Unit Price: " + item.getUnitPrice());
                         i++;
                     }
                     choice = input.nextInt();
                     if (choice <= 0 || choice >= i){
                         System.out.println("Please input a valid integer");
                     } else{
-                        String produceName = stand.getInventory().get(choice).getProduceName();
+                        String produceName = stand.getInventory().get(choice).getName();
                         System.out.println("Please enter the quantity of " + produceName + " you would like to buy");
                         int quantity = input.nextInt();
-                        stand.removeProduce(stand.getInventory().get(choice).getProduce(), quantity); 
+                        //stand.removeProduce(stand.getInventory().get(choice).getProduce(), quantity); 
                     }
                     break;
                 case 2:

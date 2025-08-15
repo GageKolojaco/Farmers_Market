@@ -30,18 +30,18 @@ public class Stand {
 
     public void addProduce(InventoryItem produce, int numberOfItems, double unitPrice){
         for (InventoryItem item : inventory){//search through existing inventory
-            if (item.getProduce().equals(produce)){ //if the produce already exists then add more
+            if (item.getName().equals(produce)){ //if the produce already exists then add more
                 item.setNumberOfItems(item.getNumberOfItems()+numberOfItems);
                 return;
             }
         }
-        InventoryItem newItem = new InventoryItem(produce, numberOfItems, unitPrice); //else it will hit this statement and add the new item
+        InventoryItem newItem = new Produce(produce, unitPrice, numberOfItems); //else it will hit this statement and add the new item
         inventory.add(newItem);
     }
 
     public void removeProduce(InventoryItem produce, int numberOfItems){
         for (InventoryItem item : inventory){
-            if (item.getProduce().equals(produce)){
+            if (item.getName().equals(produce.getName())){
                 item.setNumberOfItems(item.getNumberOfItems()-numberOfItems);
             }
         }
@@ -52,7 +52,7 @@ public class Stand {
     public String getInventoryToString(){
         String inventory = "";
         for (InventoryItem item : this.inventory){//search through existing inventory
-            inventory += item.getProduceName() + " Quantity: " + item.getNumberOfItems() + " ";
+            inventory += item.getName() + " Quantity: " + item.getNumberOfItems() + " ";
         }
         if (inventory.isEmpty()){inventory = "No Produce Assigned";}
         return inventory;
