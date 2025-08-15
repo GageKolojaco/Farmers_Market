@@ -198,6 +198,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
                         System.out.println(i + ": " + type.toString());
                         i++;
                     }
+                    System.out.println("====================");
                     int produceChoice = input.nextInt();
                     System.out.println("====================");
                     System.out.println("Please enter a integer value representing the quantity of produce to be assigned to Stand ID #: " + standID);
