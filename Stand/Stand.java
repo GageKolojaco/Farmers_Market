@@ -63,6 +63,16 @@ public class Stand {
 
     public List<InventoryItem> getInventory(){return inventory;}
 
+    public String getInventoryOfSpecifiedProduce(String produceName){
+        String specificInventory = "\n";
+        for (InventoryItem item : this.inventory){//search through existing inventory
+            if (item.getName().equals(produceName)) {
+                specificInventory += item.getName() + " | Quantity: " + item.getNumberOfItems() + " " + " | Unit Price: " + item.getUnitPrice();
+            }
+        }
+        return specificInventory;
+    }
+
     public String getInventoryToString(){
         String inventory = "\n";
         for (InventoryItem item : this.inventory){//search through existing inventory

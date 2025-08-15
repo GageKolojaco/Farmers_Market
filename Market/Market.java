@@ -371,7 +371,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
             for (Stand tempStand : findStandsFromProduceName(produceName)){
                 System.out.println("====================");
                 System.out.println("Stand ID #: " + tempStand.getStandID());
-                System.out.println("Inventory: " + tempStand.getInventoryToString());
+                System.out.println("Inventory: " + tempStand.getInventoryOfSpecifiedProduce(produceName));
                 System.out.println("====================");
             }
         } else{
