@@ -331,29 +331,34 @@ public class Market {  //using a basic linked list to connect all the stands in 
         int produceChoice = input.nextInt();
         String produceName = "";
         switch(produceChoice){
-                    case 1:
-                        produceName = "Asparagus";
-                        break;
-                    case 2:
-                        produceName = "Celery";
-                        break;
-                    case 3:
-                        produceName = "Dragonfruit";
-                        break;
-                    case 4:
-                        produceName = "Strawberry";
-                        break;
-                    case 5:
-                        produceName = "Watermelon";
-                        break;
-                    default:
-                        System.out.println("Please enter an integer value 1 through 6");
-                }
-        for (Stand tempStand : findStandsFromProduceName(produceName)){
+            case 1:
+                produceName = "Asparagus";
+                break;
+            case 2:
+                produceName = "Celery";
+                break;
+            case 3:
+                produceName = "Dragonfruit";
+                break;
+            case 4:
+                produceName = "Strawberry";
+                break;
+            case 5:
+                produceName = "Watermelon";
+                break;
+            default:
+                System.out.println("Please enter an integer value 1 through 6");
+        }
+        if (!findStandsFromProduceName(produceName).isEmpty()){
+            for (Stand tempStand : findStandsFromProduceName(produceName)){
+                System.out.println("====================");
+                System.out.println("Stand ID #: " + tempStand.getStandID());
+                System.out.println("Inventory: " + tempStand.getInventoryToString());
+                System.out.println("====================");
+            }
+        } else{
             System.out.println("====================");
-            System.out.println("Stand ID #: " + tempStand.getStandID());
-            System.out.println("Inventory: " + tempStand.getInventoryToString());
-            System.out.println("====================");
+            System.out.println("Not in stock at any stand");
         }
     }
 
