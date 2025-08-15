@@ -134,11 +134,11 @@ public class Market {  //using a basic linked list to connect all the stands in 
         Node currentNode = head;
         while (currentNode.next != null){
             if (currentNode.standID == standID){
-                currentNode.stand.setFarmer(farmer);
+                currentNode.stand.setFarmerName(farmer);
             }
             currentNode = currentNode.next;
         }
-        if (currentNode.standID == standID){currentNode.stand.setFarmer(farmer);}
+        if (currentNode.standID == standID){currentNode.stand.setFarmerName(farmer);}
     }
 
     private void assignFarmerToStand(){

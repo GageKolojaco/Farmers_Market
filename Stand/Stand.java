@@ -23,10 +23,9 @@ public class Stand {
 
     public void setStandID(int standID){this.standID = standID;}
 
-    //public Farmer getFarmer(){return farmer;}
     public String getFarmerName(){return farmer.getName();}
 
-    public void setFarmer(Farmer farmer){this.farmer = farmer;}
+    public void setFarmerName(Farmer farmer){this.farmer = farmer;}
 
     public void addProduce(InventoryItem produce, int numberOfItems, double unitPrice){
         for (InventoryItem item : inventory){//search through existing inventory
