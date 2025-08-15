@@ -34,7 +34,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         this.size = 0;
     }
 
-    public int getSize(){return size;}
+    public int getSize(){return size;}//might not be necessary
 
     public void openMarket() {
         boolean marketMenu = true;
@@ -175,11 +175,21 @@ public class Market {  //using a basic linked list to connect all the stands in 
                     double unitPrice = input.nextDouble();
                     String produceChoiceString = null;
                     switch(produceChoice){
-                        case 1: produceChoiceString = "asparagus";
-                        case 2: produceChoiceString = "celery";
-                        case 3: produceChoiceString = "dragonfruit";
-                        case 4: produceChoiceString = "strawberry"; 
-                        case 5: produceChoiceString =  "watermelon";
+                        case 1: 
+                            produceChoiceString = "asparagus";
+                            break;
+                        case 2: 
+                            produceChoiceString = "celery";
+                            break;
+                        case 3: 
+                            produceChoiceString = "dragonfruit";
+                            break;
+                        case 4: 
+                            produceChoiceString = "strawberry";
+                            break; 
+                        case 5: 
+                            produceChoiceString =  "watermelon";
+                            break;
                         default: break;
                     }
                     InventoryItem newItem = ProduceFactory.build(produceChoiceString, unitPrice, quantity);
@@ -291,13 +301,9 @@ public class Market {  //using a basic linked list to connect all the stands in 
     }
 
     private boolean containsStand(int standID){ //change this later to probably if (getStand) true, else false
-        Node currentNode = head;
         boolean containsStand = false;
-        while (currentNode != null){
-            if (currentNode.standID == standID){
-                containsStand = true;
-            }
-            currentNode = currentNode.next;
+        if (getStand(standID) != null){
+            containsStand = true;
         }
         return containsStand;
     }
