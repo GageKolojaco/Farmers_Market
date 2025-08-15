@@ -26,10 +26,10 @@ Notes:
 - Done - *Add farmer name to viewStandInDetail*
 - Done - *Make it so that when produce is assigned to a stand already stocked in it, the new assignment resets the unit price to its most recent assignment*
 - Maybe make it so that when your search for a piece of produce, it returns only the stand's specific item instead of the stand's entire inventory
-
+- Could probably make changing unit price for a specific stands item its own menu category and method, but this is a nonpriority for now
 To be fixed:
 - Fixed - *Search feature currently breaks after selection of item to search for.*
 - Fixed - *Adding a second produce adds the quantity values together instead of adding them as seperate items*
 - Fixed - *Exit to Market Menu currently exits program in some cases*
 - Fixed - *Program allows for the assignment of duplicate id's for stands, probably fix with a call of containsStand();*
-- Program doesn't allow for the purchase of a greater quantity of item than assigned, but the flavor text confirming the sale still pops up
+- Fixed - *Program doesn't allow for the purchase of a greater quantity of item than assigned, but the flavor text confirming the sale still pops up*

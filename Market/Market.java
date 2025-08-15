@@ -325,10 +325,15 @@ public class Market {  //using a basic linked list to connect all the stands in 
             System.out.println("Please enter an integer value representing the quantity you would like to purchase");
             System.out.println("====================");
             int quantity = input.nextInt();
-            stand.removeProduce(selectedItem, quantity);
-            System.out.println("====================");
-            System.out.println("Purchased " + quantity + " of " + selectedItem.getName() + " at a unit price of " + selectedItem.getUnitPrice() + " for a total of $" + (quantity * selectedItem.getUnitPrice()));
-            System.out.println("====================");
+            if (selectedItem.getNumberOfItems() > quantity){
+                stand.removeProduce(selectedItem, quantity);
+                System.out.println("====================");
+                System.out.println("Purchased " + quantity + " of " + selectedItem.getName() + " at a unit price of " + selectedItem.getUnitPrice() + " for a total of $" + (quantity * selectedItem.getUnitPrice()));
+                System.out.println("====================");
+            } else{
+                System.out.println("====================");
+                System.out.println("Please select up to the maximum quantity of the produce assigned to this stand, but no greater");
+            }
         }
     }
 
