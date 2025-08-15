@@ -35,7 +35,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         this.size = 0;
     }
 
-    public int getSize(){return size;}//might not be necessary
+    //public int getSize(){return size;}//might not be necessary
 
     private Stand getStand(int standID){
         Node currentNode = head;
