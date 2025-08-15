@@ -87,7 +87,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
                         listStands();
                         break;
                     case 5:
-                        viewStandsInDetail();
+                        viewStandInDetail();
                         break;
                     case 6:
                         searchProduce();
@@ -263,7 +263,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         
     }
 
-    private void viewStandsInDetail(){
+    private void viewStandInDetail(){
         if(listStands()){
             System.out.println("====================");
             System.out.println("Please select a Stand ID # look at in further detail:");
