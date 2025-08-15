@@ -119,7 +119,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
         size++;
     }*/
     //change most methods to private later now that most of the logic is handled within the market class
-    private void addStand(){
+    private void addStand(){ //found bug with addStand()? only first created stand is displayed in listStands()
         System.out.println("====================");
         System.out.println("Please enter an integer value representing the ID of the stand to be added:");
         System.out.println("====================");
