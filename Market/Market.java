@@ -1,6 +1,9 @@
 package Market;
 
+import java.util.List;
+
 import Farmer.Farmer;
+import Inventory.InventoryItem;
 import Stand.Stand;
 
 public class Market {  //using a basic linked list to connect all the stands in the market
@@ -84,5 +87,22 @@ public class Market {  //using a basic linked list to connect all the stands in 
         }
         if (currentNode.standID == standID){stand = currentNode.stand;}
         return stand;
+    }
+
+    public List<Stand> findStandsFromProduce(String produce){
+        List<Stand> listOfStands = null;
+        Node currentNode = head;
+        while (currentNode.next != null){
+            for (InventoryItem item : currentNode.stand.getInventory())
+                if (produce.equals(item.getProduceName())){
+                    listOfStands.add(currentNode.stand);
+                }
+            currentNode = currentNode.next;
+        }
+        for (InventoryItem item : currentNode.stand.getInventory())
+            if (produce.equals(item.getProduceName())){
+                listOfStands.add(currentNode.stand);
+            }
+        return listOfStands; 
     }
 }

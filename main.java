@@ -178,7 +178,15 @@ public class Main {
                                     System.out.println(i + ": " + item.getProduceName() + " Unit Price: " + item.getUnitPrice());
                                     i++;
                                 }
-
+                                choice = input.nextInt();
+                                if (choice <= 0 || choice >= i){
+                                    System.out.println("Please input a valid integer");
+                                } else{
+                                    String produceName = stand.getInventory().get(choice).getProduceName();
+                                    System.out.println("Please enter the quantity of " + produceName + " you would like to buy");
+                                    int quantity = input.nextInt();
+                                    stand.removeProduce(stand.getInventory().get(choice).getProduce(), quantity); 
+                                }
                                 break;
                             case 2:
                                 break;
@@ -187,7 +195,40 @@ public class Main {
                         }
                         break;
                     case 6:
-                    //search();
+                        System.out.println("====================");
+                        System.out.println("Select the type of produce you would like to search for:");
+                        int i=1;
+                            for (Produce.produceTypes type : produceTypes.values()) {
+                                System.out.println(i + ": " + type.toString());
+                                i++;
+                            }
+                        int produceChoice = input.nextInt();
+                        String produce = "";
+                        switch(produceChoice){
+                                    case 1:
+                                        produce = "Asparagus";
+                                        break;
+                                    case 2:
+                                        produce = "Celery";
+                                        break;
+                                    case 3:
+                                        produce = "Dragonfruit";
+                                        break;
+                                    case 4:
+                                        produce = "Strawberry";
+                                        break;
+                                    case 5:
+                                        produce = "Watermelon";
+                                        break;
+                                    default:
+                                        System.out.println("Please enter an integer value 1 through 6");
+                                }
+                        for (Stand tempStand : market.findStandsFromProduce(produce)){
+                            System.out.println("====================");
+                            System.out.println("Stand ID #: " + tempStand.getStandID());
+                            System.out.println("Inventory: " + tempStand.getInventoryToString());
+                            System.out.println("====================");
+                        }
                     case 7:
                         marketMenu = false;
                         return;
