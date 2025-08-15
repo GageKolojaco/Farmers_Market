@@ -24,5 +24,5 @@ Notes:
 
 To be fixed:
 - Search feature currently breaks after selection of item to search for.
-- Adding a second produce adds the quantity values together instead of adding them as seperate items
-- Exit to Market Menu currently exits program
+- Fixed - *Adding a second produce adds the quantity values together instead of adding them as seperate items*
+- Exit to Market Menu currently exits program in some cases
