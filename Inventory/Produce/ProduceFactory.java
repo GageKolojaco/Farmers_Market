@@ -5,7 +5,7 @@ import Inventory.InventoryItem;
 public class ProduceFactory {
     private ProduceFactory(){}
 
-    public static InventoryItem build(String name, double unitPrice, int numberOfItems) throws Exception{
+    public static InventoryItem build(String name, double unitPrice, int numberOfItems){
         String produceName = name.trim().toLowerCase(); //trimming for consistency
         switch (produceName) {
             case "asparagus":
@@ -19,7 +19,7 @@ public class ProduceFactory {
             case "watermelon":
                 return new Asparagus(unitPrice, numberOfItems);
             default:
-                throw new Exception();
+                return null;
         }
     }
 }
