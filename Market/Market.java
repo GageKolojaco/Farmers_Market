@@ -259,21 +259,7 @@ public class Market {  //using a basic linked list to connect all the stands in 
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("====================");
-                    System.out.println("Please select the produce you would like to purchase:");
-                    System.out.println("====================");
-                    int i=1;
-                    for (InventoryItem item : stand.getInventory()) {
-                        System.out.println(i + ": " + item.getName() + " | Quantity: " + item.getNumberOfItems() + " | Unit Price: " + item.getUnitPrice());
-                        i++;
-                    }
-                    System.out.println("====================");
-                    choice = input.nextInt();
-                    if (choice <= 0 || choice >= i){
-                        System.out.println("Please input a valid integer");
-                    } else{
-                        buyProduce(stand);
-                    }
+                    buyProduce(stand);
                     break;
                 case 2:
                     break;
@@ -284,7 +270,26 @@ public class Market {  //using a basic linked list to connect all the stands in 
     }
 
     private void buyProduce(Stand stand){
-        
+        System.out.println("====================");
+            System.out.println("Please select the produce you would like to purchase:");
+            System.out.println("====================");
+            int i=1;
+            for (InventoryItem item : stand.getInventory()) {
+                System.out.println(i + ": " + item.getName() + " | Quantity: " + item.getNumberOfItems() + " | Unit Price: " + item.getUnitPrice());
+                i++;
+            }
+            System.out.println("====================");
+            int choice = input.nextInt();
+            if (choice <= 0 || choice >= i){
+                System.out.println("Please input a valid integer");
+            } else{
+                System.out.println("====================");
+                System.out.println("Please enter an integer value representing the quantity you would like to purchase");
+                System.out.println("====================");
+                int quantity = input.nextInt();
+                //stand.removeProduce(chosenProduce, quantity)
+                System.out.println("Purchased " + quantity + " of [itemName] at a unit price of [itemUnitPrice] for a total of [quantity * itemUnitPrice]");
+            }
         //System.out.println("Please enter the quantity of " +  + " you would like to buy");
         //int quantity = input.nextInt();
         //stand.removeProduce(stand.getInventory().get(choice).getProduce(), quantity); 
